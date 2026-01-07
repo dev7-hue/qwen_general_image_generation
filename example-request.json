@@ -1,0 +1,722 @@
+{
+  "input": {
+    "workflow": {
+      "1": {
+        "inputs": {
+          "filename": "Qwen-Image-Edit-F2P.safetensors",
+          "model": [
+            "10",
+            0
+          ]
+        },
+        "class_type": "LoraLoaderModelOnly",
+        "_meta": {
+          "title": "LoraLoaderModelOnly"
+        }
+      },
+      "3": {
+        "inputs": {},
+        "class_type": "Reroute",
+        "_meta": {
+          "title": "Reroute"
+        }
+      },
+      "5": {
+        "inputs": {
+          "images": [
+            "105",
+            0
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "PreviewImage"
+        }
+      },
+      "6": {
+        "inputs": {
+          "value": 1,
+          "model": [
+            "72",
+            0
+          ]
+        },
+        "class_type": "DifferentialDiffusion",
+        "_meta": {
+          "title": "DifferentialDiffusion"
+        }
+      },
+      "10": {
+        "inputs": {
+          "filename": "consistence_edit_v2.safetensors",
+          "model": [
+            "64",
+            0
+          ]
+        },
+        "class_type": "LoraLoaderModelOnly",
+        "_meta": {
+          "title": "LoraLoaderModelOnly"
+        }
+      },
+      "13": {
+        "inputs": {
+          "value": false,
+          "mask": [
+            "105",
+            1
+          ]
+        },
+        "class_type": "LayerMask: MaskGrow",
+        "_meta": {
+          "title": "LayerMask: MaskGrow"
+        }
+      },
+      "14": {
+        "inputs": {
+          "mask": [
+            "13",
+            0
+          ]
+        },
+        "class_type": "LayerMask: MaskPreview",
+        "_meta": {
+          "title": "LayerMask: MaskPreview"
+        }
+      },
+      "15": {
+        "inputs": {
+          "value": false,
+          "mask": [
+            "13",
+            0
+          ]
+        },
+        "class_type": "MaskToSEGS",
+        "_meta": {
+          "title": "MaskToSEGS"
+        }
+      },
+      "16": {
+        "inputs": {
+          "segs": [
+            "15",
+            0
+          ]
+        },
+        "class_type": "SegsToCombinedMask",
+        "_meta": {
+          "title": "SegsToCombinedMask"
+        }
+      },
+      "19": {
+        "inputs": {
+          "value": true,
+          "positive": [
+            "62",
+            0
+          ],
+          "negative": [
+            "37",
+            0
+          ],
+          "vae": [
+            "3",
+            0
+          ],
+          "pixels": [
+            "63",
+            0
+          ],
+          "mask": [
+            "36",
+            0
+          ]
+        },
+        "class_type": "InpaintModelConditioning",
+        "_meta": {
+          "title": "InpaintModelConditioning"
+        }
+      },
+      "20": {
+        "inputs": {
+          "value": false,
+          "mask": [
+            "16",
+            0
+          ]
+        },
+        "class_type": "LayerMask: MaskGrow",
+        "_meta": {
+          "title": "LayerMask: MaskGrow"
+        }
+      },
+      "23": {
+        "inputs": {
+          "text": "original",
+          "image": [
+            "89",
+            0
+          ],
+          "scale_to_length": [
+            "46",
+            0
+          ]
+        },
+        "class_type": "LayerUtility: ImageScaleByAspectRatio V2",
+        "_meta": {
+          "title": "LayerUtility: ImageScaleByAspectRatio V2"
+        }
+      },
+      "31": {
+        "inputs": {
+          "mask": [
+            "20",
+            0
+          ]
+        },
+        "class_type": "LayerMask: MaskPreview",
+        "_meta": {
+          "title": "LayerMask: MaskPreview"
+        }
+      },
+      "32": {
+        "inputs": {
+          "samples": [
+            "33",
+            0
+          ],
+          "vae": [
+            "3",
+            0
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "33": {
+        "inputs": {
+          "seed": [
+            "70",
+            0
+          ],
+          "steps": 4,
+          "cfg": 1,
+          "sampler_name": "euler",
+          "scheduler": "simple",
+          "denoise": 0.8,
+          "model": [
+            "6",
+            0
+          ],
+          "positive": [
+            "19",
+            0
+          ],
+          "negative": [
+            "19",
+            1
+          ],
+          "latent_image": [
+            "19",
+            2
+          ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+          "title": "KSampler"
+        }
+      },
+      "36": {
+        "inputs": {},
+        "class_type": "Reroute",
+        "_meta": {
+          "title": "Reroute"
+        }
+      },
+      "37": {
+        "inputs": {
+          "conditioning": [
+            "62",
+            0
+          ]
+        },
+        "class_type": "ConditioningZeroOut",
+        "_meta": {
+          "title": "ConditioningZeroOut"
+        }
+      },
+      "41": {
+        "inputs": {
+          "filename_prefix": "qwen/after_face/qwen",
+          "images": [
+            "32",
+            0
+          ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+          "title": "输出=配图"
+        }
+      },
+      "46": {
+        "inputs": {
+          "text": "1080"
+        },
+        "class_type": "Int",
+        "_meta": {
+          "title": "输入=收藏角色-提示词-302"
+        }
+      },
+      "60": {
+        "inputs": {
+          "image": [
+            "73",
+            0
+          ]
+        },
+        "class_type": "GetImageSizeAndCount",
+        "_meta": {
+          "title": "GetImageSizeAndCount"
+        }
+      },
+      "62": {
+        "inputs": {
+          "text": "replace the face with the scene, keep the facial expression from image 2",
+          "clip": [
+            "65",
+            0
+          ],
+          "vae": [
+            "3",
+            0
+          ],
+          "image1": [
+            "60",
+            0
+          ],
+          "image2": [
+            "63",
+            0
+          ]
+        },
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "_meta": {
+          "title": "TextEncodeQwenImageEditPlus"
+        }
+      },
+      "63": {
+        "inputs": {
+          "image": [
+            "23",
+            0
+          ]
+        },
+        "class_type": "GetImageSizeAndCount",
+        "_meta": {
+          "title": "GetImageSizeAndCount"
+        }
+      },
+      "64": {
+        "inputs": {
+          "filename": "qwen_image_edit_2509_fp8_e4m3fn.safetensors"
+        },
+        "class_type": "UNETLoader",
+        "_meta": {
+          "title": "UNETLoader"
+        }
+      },
+      "65": {
+        "inputs": {
+          "filename": "qwen_2.5_vl_7b_fp8_scaled.safetensors"
+        },
+        "class_type": "CLIPLoader",
+        "_meta": {
+          "title": "CLIPLoader"
+        }
+      },
+      "66": {
+        "inputs": {
+          "filename": "qwen_image_vae.safetensors"
+        },
+        "class_type": "VAELoader",
+        "_meta": {
+          "title": "VAELoader"
+        }
+      },
+      "67": {
+        "inputs": {
+          "value": 3,
+          "image_1": [
+            "63",
+            0
+          ],
+          "image_2": [
+            "105",
+            0
+          ],
+          "image_3": [
+            "60",
+            0
+          ]
+        },
+        "class_type": "ImageConcatMulti",
+        "_meta": {
+          "title": "ImageConcatMulti"
+        }
+      },
+      "68": {
+        "inputs": {
+          "text": "right",
+          "image1": [
+            "67",
+            0
+          ],
+          "image2": [
+            "32",
+            0
+          ]
+        },
+        "class_type": "ImageConcanate",
+        "_meta": {
+          "title": "ImageConcanate"
+        }
+      },
+      "69": {
+        "inputs": {
+          "images": [
+            "68",
+            0
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "PreviewImage"
+        }
+      },
+      "70": {
+        "inputs": {
+          "value": 1046031468719099
+        },
+        "class_type": "easy seed",
+        "_meta": {
+          "title": "easy seed"
+        }
+      },
+      "72": {
+        "inputs": {
+          "filename": "Qwen-Image-Lightning-8steps-V1.0.safetensors",
+          "model": [
+            "1",
+            0
+          ]
+        },
+        "class_type": "LoraLoaderModelOnly",
+        "_meta": {
+          "title": "LoraLoaderModelOnly"
+        }
+      },
+      "73": {
+        "inputs": {
+          "value": 512,
+          "image": [
+            "103",
+            0
+          ],
+          "width": [
+            "23",
+            3
+          ],
+          "height": [
+            "23",
+            4
+          ]
+        },
+        "class_type": "ImageResizeKJv2",
+        "_meta": {
+          "title": "ImageResizeKJv2"
+        }
+      },
+      "88": {
+        "inputs": {
+          "value": 1,
+          "model": [
+            "102",
+            0
+          ]
+        },
+        "class_type": "CFGNorm",
+        "_meta": {
+          "title": "CFGNorm"
+        }
+      },
+      "89": {
+        "inputs": {
+          "samples": [
+            "93",
+            0
+          ],
+          "vae": [
+            "90",
+            0
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "90": {
+        "inputs": {
+          "filename": "qwen_image_vae.safetensors"
+        },
+        "class_type": "VAELoader",
+        "_meta": {
+          "title": "VAELoader"
+        }
+      },
+      "91": {
+        "inputs": {
+          "filename": "qwen_2.5_vl_7b_fp8_scaled.safetensors"
+        },
+        "class_type": "CLIPLoader",
+        "_meta": {
+          "title": "CLIPLoader"
+        }
+      },
+      "92": {
+        "inputs": {
+          "filename": "Qwen-Image-Lightning-4steps-V1.0.safetensors",
+          "model": [
+            "101",
+            0
+          ]
+        },
+        "class_type": "LoraLoaderModelOnly",
+        "_meta": {
+          "title": "LoraLoaderModelOnly"
+        }
+      },
+      "93": {
+        "inputs": {
+          "seed": 367269666579160,
+          "steps": 8,
+          "cfg": 1.9,
+          "sampler_name": "euler",
+          "scheduler": "beta",
+          "denoise": 1,
+          "model": [
+            "88",
+            0
+          ],
+          "positive": [
+            "104",
+            0
+          ],
+          "negative": [
+            "99",
+            0
+          ],
+          "latent_image": [
+            "96",
+            0
+          ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+          "title": "KSampler"
+        }
+      },
+      "94": {
+        "inputs": {
+          "filename_prefix": "qwen/before_face/qwen_",
+          "images": [
+            "89",
+            0
+          ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+          "title": "SaveImage"
+        }
+      },
+      "95": {
+        "inputs": {
+          "image": "pose.png"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "LoadImage"
+        }
+      },
+      "96": {
+        "inputs": {
+          "pixels": [
+            "97",
+            0
+          ],
+          "vae": [
+            "90",
+            0
+          ]
+        },
+        "class_type": "VAEEncode",
+        "_meta": {
+          "title": "VAEEncode"
+        }
+      },
+      "97": {
+        "inputs": {
+          "text": "lanczos",
+          "image": [
+            "103",
+            0
+          ]
+        },
+        "class_type": "ImageScaleToTotalPixels",
+        "_meta": {
+          "title": "ImageScaleToTotalPixels"
+        }
+      },
+      "99": {
+        "inputs": {
+          "filename": "face swap, paint, blurry, deformed face, extra limbs, low resolution, cartoon, anime, plastic skin, grainy, noisy, watermarks, text, bad anatomy, unnatural pose, messy hair, harsh shadows, visible brand logos, cluttered background, uncompleted background details, background noise, uncompleted fingers, extra fingers, less fingers, unrealistic, male genitals as female, incomplete male body, artifacts. over exposed, protruding nipples",
+          "clip": [
+            "91",
+            0
+          ],
+          "vae": [
+            "90",
+            0
+          ],
+          "image1": [
+            "103",
+            0
+          ],
+          "image2": [
+            "100",
+            0
+          ],
+          "image3": [
+            "95",
+            0
+          ]
+        },
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "_meta": {
+          "title": "TextEncodeQwenImageEditPlus"
+        }
+      },
+      "100": {
+        "inputs": {
+          "image": "70f365ef-914b-4c1b-b9fd-98f381bd1bcf_68bb9f6d262a233225a34885f7391e42.jpg"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "LoadImage"
+        }
+      },
+      "101": {
+        "inputs": {
+          "filename": "Qwen-Rapid-AIO-NSFW-v14.1.safetensors"
+        },
+        "class_type": "UNETLoader",
+        "_meta": {
+          "title": "UNETLoader"
+        }
+      },
+      "102": {
+        "inputs": {
+          "value": 3,
+          "model": [
+            "108",
+            0
+          ]
+        },
+        "class_type": "ModelSamplingAuraFlow",
+        "_meta": {
+          "title": "ModelSamplingAuraFlow"
+        }
+      },
+      "103": {
+        "inputs": {
+          "image": "Bisa.jpg"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "LoadImage"
+        }
+      },
+      "104": {
+        "inputs": {
+          "filename": "African, deep mahogany skin, 5'8\", athletic build with toned abs and sculpted back, medium round breasts, medium round butt, leaning casually against a doorframe with her arms crossed, head turned three-quarters towards the camera with a relaxed expression, wearing a sleek dark green satin slip dress with thin straps, ambient indoor light, background of a quiet suburban street visible through an open door.\n",
+          "clip": [
+            "91",
+            0
+          ],
+          "vae": [
+            "90",
+            0
+          ],
+          "image1": [
+            "103",
+            0
+          ],
+          "image2": [
+            "100",
+            0
+          ],
+          "image3": [
+            "95",
+            0
+          ]
+        },
+        "class_type": "TextEncodeQwenImageEditPlus",
+        "_meta": {
+          "title": "TextEncodeQwenImageEditPlus"
+        }
+      },
+      "105": {
+        "inputs": {
+          "filename": "sam_vit_l (1.25GB)",
+          "image": [
+            "63",
+            0
+          ]
+        },
+        "class_type": "LayerMask: SegmentAnythingUltra",
+        "_meta": {
+          "title": "LayerMask: SegmentAnythingUltra"
+        }
+      },
+      "107": {
+        "inputs": {
+          "filename": "Qwen_Snofs_1_3.safetensors",
+          "model": [
+            "92",
+            0
+          ]
+        },
+        "class_type": "LoraLoaderModelOnly",
+        "_meta": {
+          "title": "LoraLoaderModelOnly"
+        }
+      },
+      "108": {
+        "inputs": {
+          "filename": "realistic skin no plastic qwen[prski]-gmr.safetensors",
+          "model": [
+            "107",
+            0
+          ]
+        },
+        "class_type": "LoraLoaderModelOnly",
+        "_meta": {
+          "title": "LoraLoaderModelOnly"
+        }
+      }
+    }
+  }
+}
